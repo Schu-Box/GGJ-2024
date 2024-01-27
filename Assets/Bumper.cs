@@ -8,7 +8,9 @@ public class Bumper : MonoBehaviour
 {
     public float bumpForce = 10f;
 
-    [HideInInspector]public float massValue;
+    public float massValue = 1f;
+
+    // [HideInInspector]public float massValue;
 
     public MMF_Player feedback_bump;
     public MMF_Player feedback_breakable;
@@ -18,7 +20,7 @@ public class Bumper : MonoBehaviour
 
     private void Start()
     {
-        massValue = transform.localScale.x * transform.localScale.y;
+        // massValue = transform.localScale.x * transform.localScale.y;
 
         GameController.Instance.AddBumper(this);
 
@@ -29,24 +31,39 @@ public class Bumper : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if(Player.Instance.CanCollectBumper(this) && Player.Instance.GetCurrentMass() >= massValue)
-            {
-                RemoveBumper();
-
-                Player.Instance.Pickup(this);
-                
-                feedback_pickup.PlayFeedbacks();
-            }
-            
-            //DO we also bump or nah?
+            // Debug.Log("Hit with speed: " + Player.Instance.GetLastVelocity());
             
             feedback_bump?.PlayFeedbacks();
-            
+        
             Vector2 bumpDirection = collision.GetContact(0).point - (Vector2)collision.transform.position;
             bumpDirection = -bumpDirection.normalized;
-            
+        
             Player.Instance.Bumped(this, bumpDirection * bumpForce);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log("Triggere entered!");
+        
+        if(collider.gameObject.CompareTag("Player"))
+        {
+            RemoveBumper();
+
+            Player.Instance.Pickup(this);
+                
+            feedback_pickup?.PlayFeedbacks();
+        }
+    }
+
+    public void SetDestroyable(bool canDestroy)
+    {
+        if (canDestroy)
+        {
+            Debug.Log("CAN DESTROY!");
+        }
+        
+        collie.isTrigger = canDestroy; 
     }
 
     public void RemoveBumper()
@@ -58,6 +75,6 @@ public class Bumper : MonoBehaviour
 
     public void ShowBreakableVisuals()
     {
-        feedback_breakable.PlayFeedbacks();
+        feedback_breakable?.PlayFeedbacks();
     }
 }

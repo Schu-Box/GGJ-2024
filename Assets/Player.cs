@@ -8,14 +8,21 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
     
-    public float movementSpeed = 10;
-    public float massAbsorbtionRate = 0.25f;
-
+    [Header("Movement")]
+    public float movementStrength = 1000;
     public float linearDragWhenMoving = 1f;
     public float linearDragWhenGliding = 0.3f;
 
+    public float maxSpeedFromMovement = 10f;
+    public float requiredSpeedToBreakBumper = 15f;
+
+    [Header("Mass")]
+    public float massAbsorbtionRate = 0.25f;
+
     public float startingMass = 1;
-    [HideInInspector] public float currentMass;
+    
+    private float currentMass;
+    private float lastVelocity;
 
     public MMF_Player feedback_bump;
 
@@ -38,19 +45,42 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 movementVector = new Vector3(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
-        rb.AddForce(movementVector * (movementSpeed * Time.deltaTime));
         
-        // bool playerGivingInput = Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
+        if (movementVector.x == 1f && rb.velocity.x > maxSpeedFromMovement) //Ignore movement if they're already at max
+        {
+            movementVector.x = 0;
+        }
+        else if(movementVector.x == -1f && rb.velocity.x < -maxSpeedFromMovement)
+        {
+            movementVector.x = 0;
+        }
+        
+        if (movementVector.y == 1f && rb.velocity.y > maxSpeedFromMovement)
+        {
+            movementVector.y = 0;
+        }
+        else if(movementVector.y == -1f && rb.velocity.y < -maxSpeedFromMovement)
+        {
+            movementVector.y = 0;
+        }
+        
+        Vector3 forceToAdd = movementVector * (movementStrength * Time.deltaTime);
+
+        rb.AddForce(forceToAdd);
+        
         if(movementVector.magnitude > 0)
         {
-            Deactivate();
-            
             ToggleMovementType(true);
         }
         else
         {
             ToggleMovementType(false);
         }
+    }
+
+    private void LateUpdate()
+    {
+        lastVelocity = GetCurrentVelocity();
     }
 
     private bool moving = false;
@@ -71,6 +101,16 @@ public class Player : MonoBehaviour
     public float GetCurrentMass()
     {
         return transform.localScale.x * transform.localScale.y;
+    }
+    
+    public float GetCurrentVelocity()
+    {
+        return rb.velocity.magnitude;
+    }
+    
+    public float GetLastVelocity()
+    {
+        return lastVelocity;
     }
 
     public bool CanCollectBumper(Bumper bumper)

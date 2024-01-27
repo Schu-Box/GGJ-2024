@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
+
+    public TextMeshProUGUI speedText;
     
     private List<Bumper> bumperList = new List<Bumper>();
 
@@ -28,6 +31,20 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(0);
+        }
+
+        speedText.text = Player.Instance.GetCurrentVelocity().ToString("F1");
+
+        foreach (Bumper bumper in bumperList)
+        {
+            if(Player.Instance.GetCurrentMass() >= bumper.massValue && Player.Instance.GetCurrentVelocity() >= Player.Instance.requiredSpeedToBreakBumper)
+            {
+                bumper.SetDestroyable(true);
+            } 
+            else
+            {
+                bumper.SetDestroyable(false);
+            }
         }
     }
 
