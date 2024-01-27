@@ -28,9 +28,16 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
+    private Animator animator;
     
     private bool activated = false;
     private Bumper lastBumperHit = null;
+
+    private bool isRolling = false;
+
+    private bool onCooldown = false;
+    private float cooldownDuration = 2f;
+    private float cooldownTimer = 0f;
 
     private void Start()
     {
@@ -38,12 +45,17 @@ public class Player : MonoBehaviour
         
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
+
+        animator.Play("Idle");
 
         currentMass = startingMass;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        //WASD Movement
+        /*
         Vector2 movementVector = new Vector3(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
         
         if (movementVector.x == 1f && rb.velocity.x > maxSpeedFromMovement) //Ignore movement if they're already at max
@@ -76,11 +88,57 @@ public class Player : MonoBehaviour
         {
             ToggleMovementType(false);
         }
+        */
+
+        if (cooldownTimer > 0f)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+        else
+        {
+            if (onCooldown)
+            {
+                onCooldown = false;
+                Camera.main.backgroundColor = Color.gray;
+            }
+            
+            if (Input.GetMouseButtonDown(0))
+            {
+                Launch();
+            }
+        }
+        
+        if(!isRolling && GetCurrentSpeed() > 0)
+        {
+            animator.Play("Roll");
+            isRolling = true;
+        }
+        else if(isRolling && GetCurrentSpeed() <= 0)
+        {
+            animator.Play("Idle");
+            isRolling = false;
+        }
+    }
+
+    private void Launch()
+    {
+        //get the mousePosition on the screen
+        Vector3 test = Input.mousePosition;
+        test.z = 10f;
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(test);
+           
+        Vector2 direction = mousePosition - (Vector2)transform.position;
+        direction.Normalize();
+        rb.AddForce(direction * movementStrength, ForceMode2D.Impulse);
+
+        onCooldown = true;
+        cooldownTimer = cooldownDuration;
+        Camera.main.backgroundColor = Color.black;
     }
 
     private void LateUpdate()
     {
-        lastVelocity = GetCurrentVelocity();
+        lastVelocity = GetCurrentSpeed();
     }
 
     private bool moving = false;
@@ -103,7 +161,7 @@ public class Player : MonoBehaviour
         return transform.localScale.x * transform.localScale.y;
     }
     
-    public float GetCurrentVelocity()
+    public float GetCurrentSpeed()
     {
         return rb.velocity.magnitude;
     }
@@ -131,17 +189,17 @@ public class Player : MonoBehaviour
 
         rb.AddForce(force);
 
-        activated = true;
-
-        sr.color = Color.yellow;
+        // activated = true;
+        //
+        // sr.color = Color.yellow;
     }
 
-    public void Deactivate()
-    {
-        activated = false;
-
-        sr.color = Color.white;
-    }
+    // public void Deactivate()
+    // {
+    //     activated = false;
+    //
+    //     sr.color = Color.white;
+    // }
 
     public void Pickup(Bumper pickup)
     {
@@ -149,6 +207,6 @@ public class Player : MonoBehaviour
         
         transform.localScale = Vector3.one * currentMass;
 
-        GameController.Instance.UpdateBumperVisuals();
+        // GameController.Instance.UpdateBumperVisuals();
     }
 }
