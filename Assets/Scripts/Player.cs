@@ -208,7 +208,7 @@ public class Player : MonoBehaviour
 
     public void Pickup(Bumper pickup)
     {
-        float massIncrease = massAbsorbtionRate * pickup.massValue;
+        float massIncrease = massAbsorbtionRate * pickup.massGivenForBreaking;
         currentMass += massIncrease;
         
         Debug.Log("Added mass: " + massIncrease);
