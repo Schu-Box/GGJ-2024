@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 460120330565220627, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: massValue
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 785928491039405901, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
       propertyPath: m_Points.m_Paths.Array.size
       value: 3
@@ -760,6 +764,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: d27b3a0735e24e047a378a579894116b, type: 3}
+    - target: {fileID: 3475317179694618221, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3974145719874044750, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
       propertyPath: m_Sprite
       value: 
