@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance;
 
     public TextMeshProUGUI speedText;
-    
+
     private List<Bumper> bumperList = new List<Bumper>();
 
     private void Awake()
