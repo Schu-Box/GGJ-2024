@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 433029270518383176, guid: 66d1be63c310bcf4e8c93542ac1bfba5, type: 3}
       propertyPath: m_Name
-      value: Bumper_Drum (Small) Variant
+      value: Bumper_Drum (Small)
       objectReference: {fileID: 0}
     - target: {fileID: 2471301092850409062, guid: 66d1be63c310bcf4e8c93542ac1bfba5, type: 3}
       propertyPath: m_LocalScale.x
@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2471301092850409062, guid: 66d1be63c310bcf4e8c93542ac1bfba5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.64
+      value: 6.29
       objectReference: {fileID: 0}
     - target: {fileID: 2471301092850409062, guid: 66d1be63c310bcf4e8c93542ac1bfba5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.99
+      value: 4.69
       objectReference: {fileID: 0}
     - target: {fileID: 2471301092850409062, guid: 66d1be63c310bcf4e8c93542ac1bfba5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -66,11 +66,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4574679867210724555, guid: 66d1be63c310bcf4e8c93542ac1bfba5, type: 3}
       propertyPath: bumpForce
-      value: 500
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 4574679867210724555, guid: 66d1be63c310bcf4e8c93542ac1bfba5, type: 3}
       propertyPath: massValue
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

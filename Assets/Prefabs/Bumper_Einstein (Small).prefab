@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5267570531777776748, guid: 699273d853140a24e8910a697d79ae1c, type: 3}
       propertyPath: massValue
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6065644067976767169, guid: 699273d853140a24e8910a697d79ae1c, type: 3}
       propertyPath: m_LocalScale.x
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8098811023241231087, guid: 699273d853140a24e8910a697d79ae1c, type: 3}
       propertyPath: m_Name
-      value: Bumper_Einstein (Small) Variant
+      value: Bumper_Einstein (Small)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

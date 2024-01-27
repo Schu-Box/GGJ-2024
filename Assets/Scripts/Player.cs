@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     public float requiredSpeedToBreakBumper = 15f;
 
     [Header("Mass")]
-    public float massAbsorbtionRate = 0.25f;
+    public float massAbsorbtionRate = 1f;
+    public float scaleIncreasePerMass = 0.25f;
 
     public float startingMass = 1;
     
@@ -207,10 +208,8 @@ public class Player : MonoBehaviour
 
     public void Pickup(Bumper pickup)
     {
-        currentMass += massAbsorbtionRate;
+        currentMass += (massAbsorbtionRate * pickup.massValue);
         
-        transform.localScale = Vector3.one * currentMass;
-
-        // GameController.Instance.UpdateBumperVisuals();
+        transform.localScale = Vector3.one + (Vector3.one * (scaleIncreasePerMass * currentMass));
     }
 }

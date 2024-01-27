@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6544916932574818423, guid: 4bc14f5cdc320bd4e80ab41b2051a552, type: 3}
       propertyPath: m_Name
-      value: Bumper_Skull (Small) Variant
+      value: Bumper_Skull (Small)
       objectReference: {fileID: 0}
     - target: {fileID: 7181796149868496628, guid: 4bc14f5cdc320bd4e80ab41b2051a552, type: 3}
       propertyPath: bumpForce
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7181796149868496628, guid: 4bc14f5cdc320bd4e80ab41b2051a552, type: 3}
       propertyPath: massValue
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9123599971406703705, guid: 4bc14f5cdc320bd4e80ab41b2051a552, type: 3}
       propertyPath: m_LocalScale.x
