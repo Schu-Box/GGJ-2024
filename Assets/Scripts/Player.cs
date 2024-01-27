@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour
 
     public float startingMass = 1;
     
-    private float currentMass;
+    public float currentMass;
     private float lastVelocity;
 
     [Header("Feedbacks")] 
@@ -163,7 +164,7 @@ public class Player : MonoBehaviour
 
     public float GetCurrentMass()
     {
-        return transform.localScale.x * transform.localScale.y;
+        return currentMass;
     }
     
     public float GetCurrentSpeed()
@@ -186,6 +187,8 @@ public class Player : MonoBehaviour
         return true;
     }
 
+    private FMOD.Studio.EventInstance fmodStudioEvent;
+
     public void Bumped(Bumper bumper, Vector2 force)
     {
         feedback_bump?.PlayFeedbacks();
@@ -193,6 +196,10 @@ public class Player : MonoBehaviour
         lastBumperHit = bumper;
 
         rb.AddForce(force);
+
+        fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Bounce");
+        fmodStudioEvent.start();
+        fmodStudioEvent.release();
 
         // activated = true;
         //
@@ -208,7 +215,10 @@ public class Player : MonoBehaviour
 
     public void Pickup(Bumper pickup)
     {
-        currentMass += (massAbsorbtionRate * pickup.massValue);
+        float massIncrease = massAbsorbtionRate * pickup.massGivenForBreaking;
+        currentMass += massIncrease;
+        
+        Debug.Log("Added mass: " + massIncrease);
         
         transform.localScale = Vector3.one + (Vector3.one * (scaleIncreasePerMass * currentMass));
     }

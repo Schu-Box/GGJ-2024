@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
 
         foreach (Bumper bumper in bumperList)
         {
-            if(Player.Instance.GetCurrentMass() >= bumper.massValue && Player.Instance.GetCurrentSpeed() >= Player.Instance.requiredSpeedToBreakBumper)
+            if(Player.Instance.GetCurrentMass() >= bumper.massRequiredToBreak && Player.Instance.GetCurrentSpeed() >= Player.Instance.requiredSpeedToBreakBumper)
             {
                 bumper.SetBreakable(true);
             } 

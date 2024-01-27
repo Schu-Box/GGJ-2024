@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: massValue
       value: 9999999
       objectReference: {fileID: 0}
+    - target: {fileID: 460120330565220627, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: massRequiredToBreak
+      value: 1e+10
+      objectReference: {fileID: 0}
+    - target: {fileID: 460120330565220627, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: massGivenForBreaking
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 785928491039405901, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 4

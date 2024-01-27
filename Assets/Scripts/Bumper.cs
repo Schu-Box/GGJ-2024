@@ -8,7 +8,8 @@ public class Bumper : MonoBehaviour
 {
     public float bumpForce = 10f;
 
-    public float massValue = 1f;
+    public float massRequiredToBreak = 1f;
+    public float massGivenForBreaking = 1f;
 
     // [HideInInspector]public float massValue;
 
