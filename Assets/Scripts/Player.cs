@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
             if (onCooldown)
             {
                 onCooldown = false;
-                Camera.main.backgroundColor = Color.gray;
+                // Camera.main.backgroundColor = Color.gray;
             }
             
             if (Input.GetMouseButtonDown(0))
@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
 
         onCooldown = true;
         cooldownTimer = cooldownDuration;
-        Camera.main.backgroundColor = Color.black;
+        // Camera.main.backgroundColor = Color.black;
     }
 
     private void LateUpdate()
