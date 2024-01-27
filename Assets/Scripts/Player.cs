@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public static Player Instance;
+
+    public GameObject startingAnimationGameObject;
     
     [Header("Movement")]
     public float movementStrength = 1000;
@@ -54,6 +56,8 @@ public class Player : MonoBehaviour
         animator.Play("Idle");
 
         currentMass = startingMass;
+        
+        startingAnimationGameObject.SetActive(true);
     }
 
     private void Update()
