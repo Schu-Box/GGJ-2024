@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4574679867210724555, guid: 66d1be63c310bcf4e8c93542ac1bfba5, type: 3}
       propertyPath: bumpForce
-      value: 700
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4574679867210724555, guid: 66d1be63c310bcf4e8c93542ac1bfba5, type: 3}
       propertyPath: massValue

@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     public float startingMass = 1;
     
-    private float currentMass;
+    public float currentMass;
     private float lastVelocity;
 
     [Header("Feedbacks")] 
@@ -163,7 +163,7 @@ public class Player : MonoBehaviour
 
     public float GetCurrentMass()
     {
-        return transform.localScale.x * transform.localScale.y;
+        return currentMass;
     }
     
     public float GetCurrentSpeed()
@@ -208,7 +208,10 @@ public class Player : MonoBehaviour
 
     public void Pickup(Bumper pickup)
     {
-        currentMass += (massAbsorbtionRate * pickup.massValue);
+        float massIncrease = massAbsorbtionRate * pickup.massValue;
+        currentMass += massIncrease;
+        
+        Debug.Log("Added mass: " + massIncrease);
         
         transform.localScale = Vector3.one + (Vector3.one * (scaleIncreasePerMass * currentMass));
     }
