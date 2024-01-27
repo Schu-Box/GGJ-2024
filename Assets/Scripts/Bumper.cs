@@ -108,7 +108,7 @@ public class Bumper : MonoBehaviour
     {
         isTarget = true;
         
-        Debug.Log("Setting new target!");
+        Debug.Log("Setting new target: " + gameObject.name);
         
         feedback_target?.PlayFeedbacks();
     }
@@ -121,5 +121,7 @@ public class Bumper : MonoBehaviour
         feedback_unbreakable?.PlayFeedbacks();
         
         GameController.Instance.SetRandomTarget();
+        
+        GameController.Instance.AddScore(10);
     }
 }

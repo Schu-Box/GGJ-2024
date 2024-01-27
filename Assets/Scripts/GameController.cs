@@ -9,8 +9,14 @@ public class GameController : MonoBehaviour
     public static GameController Instance;
 
     public TextMeshProUGUI speedText;
+    public TextMeshProUGUI scoreText;
 
     private List<Bumper> bumperList = new List<Bumper>();
+    
+    private List<Bumper> possibleTargetList = new List<Bumper>();
+    private Bumper lastTarget = null;
+
+    private int score = 0;
 
     private void Awake()
     {
@@ -51,6 +57,11 @@ public class GameController : MonoBehaviour
     public void AddBumper(Bumper bumper)
     {
         bumperList.Add(bumper);
+
+        if (bumper.canBeTarget)
+        {
+            possibleTargetList.Add(bumper);
+        }
     }
 
     public void RemoveBumper(Bumper bumper)
@@ -60,18 +71,20 @@ public class GameController : MonoBehaviour
 
     public void SetRandomTarget()
     {
-        int randomIndex = Random.Range(0, bumperList.Count);
-        bumperList[randomIndex].SetAsTarget();
+        Bumper newTarget = lastTarget;
+        while (newTarget == lastTarget)
+        {
+            newTarget = possibleTargetList[Random.Range(0, possibleTargetList.Count)];
+        }
+        
+        newTarget.SetAsTarget();
+        lastTarget = newTarget;
     }
 
-    // public void UpdateBumperVisuals()
-    // {
-    //     foreach (Bumper bumper in bumperList)
-    //     {
-    //         if(bumper.massValue <= Player.Instance.GetCurrentMass())
-    //         {
-    //             bumper.ShowBreakableVisuals();
-    //         }
-    //     }
-    // }
+    public void AddScore(int scoreEarned)
+    {
+        score += scoreEarned;
+        
+        scoreText.text = score.ToString();
+    }
 }
