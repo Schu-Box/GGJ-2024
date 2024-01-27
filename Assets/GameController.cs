@@ -12,6 +12,15 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        StartCoroutine(LateStart());
+    }
+
+    private IEnumerator LateStart()
+    {
+        yield return new WaitForFixedUpdate();
+        
+        UpdateBumperVisuals();
     }
     
     private void Update()
