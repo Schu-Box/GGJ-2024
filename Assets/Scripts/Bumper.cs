@@ -14,9 +14,12 @@ public class Bumper : MonoBehaviour
 
     public MMF_Player feedback_bump;
     public MMF_Player feedback_breakable;
+    public MMF_Player feedback_unbreakable;
     public MMF_Player feedback_pickup;
 
     private Collider2D collie;
+    
+    private bool breakable = false;
 
     private void Start()
     {
@@ -56,14 +59,19 @@ public class Bumper : MonoBehaviour
         }
     }
 
-    public void SetDestroyable(bool canDestroy)
+    public void SetBreakable(bool nowBreakable)
     {
-        if (canDestroy)
+        if ((nowBreakable && !breakable) || (!nowBreakable && breakable))
         {
-            Debug.Log("CAN DESTROY!");
+            UpdateBreakability(nowBreakable);
         }
-        
-        collie.isTrigger = canDestroy; 
+    }
+
+    public void UpdateBreakability(bool nowBreakable)
+    {
+        breakable = nowBreakable;
+        SetBreakableVisuals();
+        collie.isTrigger = breakable;
     }
 
     public void RemoveBumper()
@@ -72,9 +80,16 @@ public class Bumper : MonoBehaviour
 
         GameController.Instance.RemoveBumper(this);
     }
-
-    public void ShowBreakableVisuals()
+    
+    public void SetBreakableVisuals()
     {
-        feedback_breakable?.PlayFeedbacks();
+        if (breakable)
+        {
+            feedback_breakable?.PlayFeedbacks();
+        }
+        else 
+        {
+            feedback_unbreakable?.PlayFeedbacks();
+        }
     }
 }

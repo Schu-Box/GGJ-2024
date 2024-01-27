@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForFixedUpdate();
         
-        UpdateBumperVisuals();
+        // UpdateBumperVisuals();
     }
     
     private void Update()
@@ -33,17 +33,17 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
-        speedText.text = Player.Instance.GetCurrentVelocity().ToString("F1");
+        speedText.text = Player.Instance.GetCurrentSpeed().ToString("F1");
 
         foreach (Bumper bumper in bumperList)
         {
-            if(Player.Instance.GetCurrentMass() >= bumper.massValue && Player.Instance.GetCurrentVelocity() >= Player.Instance.requiredSpeedToBreakBumper)
+            if(Player.Instance.GetCurrentMass() >= bumper.massValue && Player.Instance.GetCurrentSpeed() >= Player.Instance.requiredSpeedToBreakBumper)
             {
-                bumper.SetDestroyable(true);
+                bumper.SetBreakable(true);
             } 
             else
             {
-                bumper.SetDestroyable(false);
+                bumper.SetBreakable(false);
             }
         }
     }
@@ -58,14 +58,14 @@ public class GameController : MonoBehaviour
         bumperList.Remove(bumper);
     }
 
-    public void UpdateBumperVisuals()
-    {
-        foreach (Bumper bumper in bumperList)
-        {
-            if(bumper.massValue <= Player.Instance.GetCurrentMass())
-            {
-                bumper.ShowBreakableVisuals();
-            }
-        }
-    }
+    // public void UpdateBumperVisuals()
+    // {
+    //     foreach (Bumper bumper in bumperList)
+    //     {
+    //         if(bumper.massValue <= Player.Instance.GetCurrentMass())
+    //         {
+    //             bumper.ShowBreakableVisuals();
+    //         }
+    //     }
+    // }
 }
