@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     private float currentMass;
     private float lastVelocity;
 
+    [Header("Feedbacks")] 
+    public MMF_Player feedback_launch;
     public MMF_Player feedback_bump;
 
     private Rigidbody2D rb;
@@ -36,7 +38,7 @@ public class Player : MonoBehaviour
     private bool isRolling = false;
 
     private bool onCooldown = false;
-    private float cooldownDuration = 2f;
+    private float cooldownDuration = 1f;
     private float cooldownTimer = 0f;
 
     private void Start()
@@ -99,7 +101,7 @@ public class Player : MonoBehaviour
             if (onCooldown)
             {
                 onCooldown = false;
-                Camera.main.backgroundColor = Color.gray;
+                // Camera.main.backgroundColor = Color.gray;
             }
             
             if (Input.GetMouseButtonDown(0))
@@ -122,6 +124,8 @@ public class Player : MonoBehaviour
 
     private void Launch()
     {
+        feedback_launch?.PlayFeedbacks();
+        
         //get the mousePosition on the screen
         Vector3 test = Input.mousePosition;
         test.z = 10f;
@@ -133,7 +137,7 @@ public class Player : MonoBehaviour
 
         onCooldown = true;
         cooldownTimer = cooldownDuration;
-        Camera.main.backgroundColor = Color.black;
+        // Camera.main.backgroundColor = Color.black;
     }
 
     private void LateUpdate()
