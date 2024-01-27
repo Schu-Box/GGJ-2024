@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -186,6 +187,8 @@ public class Player : MonoBehaviour
         return true;
     }
 
+    private FMOD.Studio.EventInstance fmodStudioEvent;
+
     public void Bumped(Bumper bumper, Vector2 force)
     {
         feedback_bump?.PlayFeedbacks();
@@ -193,6 +196,10 @@ public class Player : MonoBehaviour
         lastBumperHit = bumper;
 
         rb.AddForce(force);
+
+        fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Bounce");
+        fmodStudioEvent.start();
+        fmodStudioEvent.release();
 
         // activated = true;
         //
