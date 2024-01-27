@@ -11,9 +11,12 @@ public class Bumper : MonoBehaviour
     public float massRequiredToBreak = 1f;
     public float massGivenForBreaking = 1f;
 
+    public bool canBeTarget = false;
+
     // [HideInInspector]public float massValue;
 
     public MMF_Player feedback_bump;
+    public MMF_Player feedback_target;
     public MMF_Player feedback_breakable;
     public MMF_Player feedback_unbreakable;
     public MMF_Player feedback_pickup;
@@ -21,12 +24,16 @@ public class Bumper : MonoBehaviour
     private Collider2D collie;
     
     private bool breakable = false;
+    private bool isTarget = false;
 
     private void Start()
     {
         // massValue = transform.localScale.x * transform.localScale.y;
 
-        GameController.Instance.AddBumper(this);
+        if (gameObject.activeInHierarchy)
+        {
+            GameController.Instance.AddBumper(this);
+        }
 
         collie = GetComponent<Collider2D>();
     }
@@ -36,6 +43,11 @@ public class Bumper : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // Debug.Log("Hit with speed: " + Player.Instance.GetLastVelocity());
+
+            if (isTarget)
+            {
+                HitTarget();
+            }
             
             feedback_bump?.PlayFeedbacks();
         
@@ -68,9 +80,9 @@ public class Bumper : MonoBehaviour
 
     public void UpdateBreakability(bool nowBreakable)
     {
-        breakable = nowBreakable;
-        SetBreakableVisuals();
-        collie.isTrigger = breakable;
+        // breakable = nowBreakable;
+        // SetBreakableVisuals();
+        // collie.isTrigger = breakable;
     }
 
     public void RemoveBumper()
@@ -90,5 +102,24 @@ public class Bumper : MonoBehaviour
         {
             feedback_unbreakable?.PlayFeedbacks();
         }
+    }
+
+    public void SetAsTarget()
+    {
+        isTarget = true;
+        
+        Debug.Log("Setting new target!");
+        
+        feedback_target?.PlayFeedbacks();
+    }
+
+    public void HitTarget()
+    {
+        isTarget = false;
+        
+        //TODO: No longer target feedback
+        feedback_unbreakable?.PlayFeedbacks();
+        
+        GameController.Instance.SetRandomTarget();
     }
 }
