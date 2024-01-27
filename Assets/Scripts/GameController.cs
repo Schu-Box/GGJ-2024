@@ -3,26 +3,37 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
+    
+    public float timeLimit = 60f;
 
     public TextMeshProUGUI speedText;
     public TextMeshProUGUI scoreText;
+    public Slider timeSlider;
+    public GameObject gameOverUI;
 
     private List<Bumper> bumperList = new List<Bumper>();
     
     private List<Bumper> possibleTargetList = new List<Bumper>();
     private Bumper lastTarget = null;
 
+    private float timeRemaining = 0f;
     private int score = 0;
+
+    private bool gameOver = false;
 
     private void Awake()
     {
         Instance = this;
 
         StartCoroutine(LateStart());
+        
+        gameOverUI.SetActive(false);
+        timeRemaining = timeLimit;
     }
 
     private IEnumerator LateStart()
@@ -41,17 +52,35 @@ public class GameController : MonoBehaviour
 
         speedText.text = Player.Instance.GetCurrentSpeed().ToString("F1");
 
-        foreach (Bumper bumper in bumperList)
+        if (!gameOver)
         {
-            if(Player.Instance.GetCurrentMass() >= bumper.massRequiredToBreak && Player.Instance.GetCurrentSpeed() >= Player.Instance.requiredSpeedToBreakBumper)
+            timeRemaining -= Time.deltaTime;
+            timeSlider.value = timeRemaining / timeLimit;
+            
+            if (timeRemaining <= 0f)
             {
-                bumper.SetBreakable(true);
-            } 
-            else
-            {
-                bumper.SetBreakable(false);
+                GameOver();
             }
         }
+        
+        // foreach (Bumper bumper in bumperList)
+        // {
+        //     if(Player.Instance.GetCurrentMass() >= bumper.massRequiredToBreak && Player.Instance.GetCurrentSpeed() >= Player.Instance.requiredSpeedToBreakBumper)
+        //     {
+        //         bumper.SetBreakable(true);
+        //     } 
+        //     else
+        //     {
+        //         bumper.SetBreakable(false);
+        //     }
+        // }
+    }
+
+    public void GameOver()
+    {
+        gameOver = true;
+        
+        gameOverUI.SetActive(true);
     }
 
     public void AddBumper(Bumper bumper)
@@ -71,20 +100,26 @@ public class GameController : MonoBehaviour
 
     public void SetRandomTarget()
     {
-        Bumper newTarget = lastTarget;
-        while (newTarget == lastTarget)
+        if (!gameOver)
         {
-            newTarget = possibleTargetList[Random.Range(0, possibleTargetList.Count)];
-        }
+            Bumper newTarget = lastTarget;
+            while (newTarget == lastTarget)
+            {
+                newTarget = possibleTargetList[Random.Range(0, possibleTargetList.Count)];
+            }
         
-        newTarget.SetAsTarget();
-        lastTarget = newTarget;
+            newTarget.SetAsTarget();
+            lastTarget = newTarget;
+        }
     }
 
     public void AddScore(int scoreEarned)
     {
-        score += scoreEarned;
+        if (!gameOver)
+        {
+            score += scoreEarned;
         
-        scoreText.text = score.ToString();
+            scoreText.text = score.ToString();  
+        }
     }
 }

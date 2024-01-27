@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5636508830513827985
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 460120330565220627, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: isTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 460120330565220627, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: massRequiredToBreak
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 460120330565220627, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: massGivenForBreaking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945667682589694436, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -945090347, guid: d3b270b4cf3eb4e47a94b47093869044, type: 3}
+    - target: {fileID: 1945667682589694436, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945667682589694436, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945667682589694436, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_Color.r
+      value: 0.22891915
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463432777365508722, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463432777365508722, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463432777365508722, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463432777365508722, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547588658825777040, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_Name
+      value: Bumper_PickupBlob Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765621548798857082, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 785928491039405901, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4547588658825777040, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6254993846435993333}
+  m_SourcePrefab: {fileID: 100100000, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+--- !u!1 &8152818386301542145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4547588658825777040, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+  m_PrefabInstance: {fileID: 5636508830513827985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &6254993846435993333
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8152818386301542145}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4

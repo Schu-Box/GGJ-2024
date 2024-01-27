@@ -7,11 +7,12 @@ using UnityEngine;
 public class Bumper : MonoBehaviour
 {
     public float bumpForce = 10f;
-
+    
     public float massRequiredToBreak = 1f;
     public float massGivenForBreaking = 1f;
 
     public bool canBeTarget = false;
+    public bool isTrigger = false;
 
     // [HideInInspector]public float massValue;
 
@@ -36,6 +37,11 @@ public class Bumper : MonoBehaviour
         }
 
         collie = GetComponent<Collider2D>();
+
+        if (isTrigger)
+        {
+            collie.isTrigger = true;
+        }
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -67,6 +73,8 @@ public class Bumper : MonoBehaviour
             Player.Instance.Pickup(this);
                 
             feedback_pickup?.PlayFeedbacks();
+            
+            GameController.Instance.AddScore(1);
         }
     }
 

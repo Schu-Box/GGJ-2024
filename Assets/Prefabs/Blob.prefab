@@ -209,6 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2054547490488634825}
+  - component: {fileID: 8240636494629302607}
   m_Layer: 0
   m_Name: Blob
   m_TagString: Untagged
@@ -233,6 +234,26 @@ Transform:
   - {fileID: 7757009587696783388}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8240636494629302607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3272512904492580223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb99c40c5bb23f45b64d74cf1ad2f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blobShapes:
+  - {fileID: 6035440730332393302}
+  - {fileID: 241518789639461007}
+  - {fileID: 1253826893004046868}
+  blobTextures:
+  - {fileID: 6900288266552009628}
+  - {fileID: 8811268621940129242}
+  - {fileID: 5437864678470993941}
 --- !u!1 &5437864678470993941
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +293,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5437864678470993941}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -557,7 +578,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8811268621940129242}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
