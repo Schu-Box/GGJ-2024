@@ -27,10 +27,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1969754574220530622}
+  m_Father: {fileID: 2906817509334781682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9194879896240189965
 SpriteRenderer:
@@ -111,10 +111,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1969754574220530622}
+  m_Father: {fileID: 2906817509334781682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5189223548673804780
 SpriteRenderer:
@@ -367,7 +367,7 @@ MonoBehaviour:
         Owner: {fileID: 7278369519824610358}
         DebugActive: 0
         Mode: 0
-        AnimateScaleTarget: {fileID: 0}
+        AnimateScaleTarget: {fileID: 2906817509334781682}
         AnimateScaleDuration: 0.2
         RemapCurveZero: 1
         RemapCurveOne: 1.5
@@ -576,7 +576,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 7278369519824610358}
         DebugActive: 0
-        BoundSpriteRenderer: {fileID: 0}
+        BoundSpriteRenderer: {fileID: 5189223548673804780}
         Mode: 0
         Duration: 0.2
         StartsOff: 0
@@ -673,10 +673,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1969754574220530622}
+  m_Father: {fileID: 2906817509334781682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &213058027370371777
 SpriteRenderer:
@@ -730,6 +730,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2787229439701443620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2906817509334781682}
+  m_Layer: 0
+  m_Name: Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2906817509334781682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787229439701443620}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8272060523403646793}
+  - {fileID: 4049255189127824309}
+  - {fileID: 5629774793516585871}
+  m_Father: {fileID: 1969754574220530622}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3617861640156525049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,7 +1432,7 @@ GameObject:
   - component: {fileID: 460120330565220627}
   - component: {fileID: 1345235132009103813}
   m_Layer: 0
-  m_Name: Bumper 1
+  m_Name: bumperSkull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1419,9 +1453,7 @@ Transform:
   m_Children:
   - {fileID: 3033371765845335987}
   - {fileID: 7427364921924369256}
-  - {fileID: 8272060523403646793}
-  - {fileID: 4049255189127824309}
-  - {fileID: 5629774793516585871}
+  - {fileID: 2906817509334781682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &460120330565220627
@@ -1484,23 +1516,25 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.07585156, y: 0.5780641}
-      - {x: -0.08060476, y: 0.5798717}
-      - {x: -0.12952581, y: 0.5694702}
-      - {x: -0.21168393, y: 0.54155403}
-      - {x: -0.29346225, y: 0.48481947}
-      - {x: -0.38410887, y: 0.39322567}
-      - {x: -0.46053392, y: 0.2936346}
-      - {x: -0.4907639, y: 0.0076338947}
-      - {x: -0.4649506, y: -0.2881355}
-      - {x: -0.32558054, y: -0.30909428}
-      - {x: -0.04509449, y: -0.21165195}
-      - {x: 0.13140398, y: -0.20694688}
-      - {x: 0.47280663, y: -0.28164348}
-      - {x: 0.50356805, y: -0.20243376}
-      - {x: 0.4547366, y: -0.14689437}
-      - {x: 0.48267335, y: 0.046312124}
-      - {x: 0.4642324, y: 0.27190596}
-      - {x: 0.36450875, y: 0.42529905}
-      - {x: 0.20287514, y: 0.544869}
+    - - {x: 0.23111641, y: 2.317832}
+      - {x: -0.3083186, y: 2.29084}
+      - {x: -0.6841701, y: 2.201334}
+      - {x: -1.0686884, y: 1.9323063}
+      - {x: -1.5386992, y: 1.5499601}
+      - {x: -1.7806607, y: 1.1851106}
+      - {x: -2.0174706, y: 0.49300188}
+      - {x: -1.9055376, y: -0.45289162}
+      - {x: -1.8577404, y: -1.0721798}
+      - {x: -1.1571717, y: -1.2935373}
+      - {x: -0.20941687, y: -0.8447932}
+      - {x: 0.39714533, y: -0.88456917}
+      - {x: 1.9856417, y: -1.0681958}
+      - {x: 2.039201, y: -0.74802786}
+      - {x: 1.7896537, y: -0.48231858}
+      - {x: 1.8139502, y: -0.16414872}
+      - {x: 1.9390857, y: 0.11819363}
+      - {x: 1.9152303, y: 0.5292032}
+      - {x: 1.862598, y: 1.0677543}
+      - {x: 1.3021387, y: 1.8196008}
+      - {x: 0.7858895, y: 2.2163675}
   m_UseDelaunayMesh: 0
