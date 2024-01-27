@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MoreMountains.Feedbacks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Player : MonoBehaviour
     
     public float movementSpeed = 10;
     public float massAbsorbtionRate = 0.25f;
+
+    public float linearDragWhenMoving = 1f;
+    public float linearDragWhenGliding = 0.3f;
 
     public float startingMass = 1;
     [HideInInspector] public float currentMass;
@@ -40,7 +44,28 @@ public class Player : MonoBehaviour
         if(movementVector.magnitude > 0)
         {
             Deactivate();
+            
+            ToggleMovementType(true);
         }
+        else
+        {
+            ToggleMovementType(false);
+        }
+    }
+
+    private bool moving = false;
+    private void ToggleMovementType(bool isMoving)
+    {
+        if (!moving && isMoving) //started moving
+        {
+            rb.drag = linearDragWhenMoving;
+        } 
+        else if (moving && !isMoving)
+        {
+            rb.drag = linearDragWhenGliding;
+        }
+
+        moving = isMoving;
     }
 
     public float GetCurrentMass()
@@ -83,5 +108,7 @@ public class Player : MonoBehaviour
         currentMass += massAbsorbtionRate;
         
         transform.localScale = Vector3.one * currentMass;
+
+        GameController.Instance.UpdateBumperVisuals();
     }
 }
