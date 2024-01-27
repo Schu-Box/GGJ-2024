@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForFixedUpdate();
         
-        // UpdateBumperVisuals();
+        SetRandomTarget();
     }
     
     private void Update()
@@ -56,6 +56,12 @@ public class GameController : MonoBehaviour
     public void RemoveBumper(Bumper bumper)
     {
         bumperList.Remove(bumper);
+    }
+
+    public void SetRandomTarget()
+    {
+        int randomIndex = Random.Range(0, bumperList.Count);
+        bumperList[randomIndex].SetAsTarget();
     }
 
     // public void UpdateBumperVisuals()
