@@ -46,10 +46,12 @@ public class Bumper : MonoBehaviour
         {
             collie.isTrigger = true;
         }
-        
-        foreach (Transform child in blobParent)
-        {
-            blobList.Add(child.GetComponent<Blob>());
+
+        if (blobParent != null)
+        { foreach (Transform child in blobParent)
+            {
+                blobList.Add(child.GetComponent<Blob>());
+            }
         }
     }
     
