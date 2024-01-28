@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
 
-    public GameObject startingAnimationGameObject;
-    
     [Header("Movement")]
     public float movementStrength = 1000;
     public float linearDragWhenMoving = 1f;
@@ -45,6 +43,8 @@ public class Player : MonoBehaviour
     private float cooldownDuration = 1f;
     private float cooldownTimer = 0f;
 
+    private bool stoppedMovement = false;
+
     private void Start()
     {
         Instance = this;
@@ -56,8 +56,6 @@ public class Player : MonoBehaviour
         animator.Play("Idle");
 
         currentMass = startingMass;
-        
-        startingAnimationGameObject.SetActive(true);
     }
 
     private void Update()
@@ -97,6 +95,11 @@ public class Player : MonoBehaviour
             ToggleMovementType(false);
         }
         */
+
+        if (stoppedMovement)
+        {
+            return;
+        }
 
         if (cooldownTimer > 0f)
         {
@@ -225,5 +228,14 @@ public class Player : MonoBehaviour
         // Debug.Log("Added mass: " + massIncrease);
         
         transform.localScale = Vector3.one + (Vector3.one * (scaleIncreasePerMass * currentMass));
+    }
+
+    public void StopMovement()
+    {
+        stoppedMovement = true;
+        
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+        rb.isKinematic = true;
     }
 }

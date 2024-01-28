@@ -26,6 +26,10 @@ public class GameController : MonoBehaviour
     public MMF_Player feedback_lowTime;
     public GameObject gameOverUI;
 
+    [Header("Start/End Animation")]
+    public Animator crumbleAnimator;
+    public MMF_Player feedback_crumble;
+
     private List<Bumper> bumperList = new List<Bumper>();
     
     private List<Bumper> possibleTargetList = new List<Bumper>();
@@ -48,6 +52,8 @@ public class GameController : MonoBehaviour
         
         gameOverUI.SetActive(false);
         timeRemaining = timeLimit;
+
+        crumbleAnimator.gameObject.SetActive(true);
     }
 
     private IEnumerator LateStart()
@@ -105,6 +111,12 @@ public class GameController : MonoBehaviour
         gameOver = true;
         
         gameOverUI.SetActive(true);
+        
+        // crumbleAnimator.gameObject.SetActive(true);
+        crumbleAnimator.Play("Grow");
+        feedback_crumble.PlayFeedbacks();
+
+        Player.Instance.StopMovement();
     }
 
     public void AddBumper(Bumper bumper)
