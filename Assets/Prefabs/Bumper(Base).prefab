@@ -1451,7 +1451,7 @@ MonoBehaviour:
         UniqueID: -837446984
         Label: Floating Text
         ChannelMode: 0
-        Channel: 0
+        Channel: 1
         MMChannelDefinition: {fileID: 0}
         Chance: 100
         DisplayColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1547,8 +1547,8 @@ MonoBehaviour:
           m_ColorSpace: 0
           m_NumColorKeys: 2
           m_NumAlphaKeys: 2
-        ForceLifetime: 0
-        Lifetime: 0.5
+        ForceLifetime: 1
+        Lifetime: 1.5
         PositionMode: 1
         TargetTransform: {fileID: 0}
         Direction: {x: 0, y: 0, z: 0}
