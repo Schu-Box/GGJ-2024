@@ -14,6 +14,11 @@ public class GameController : MonoBehaviour
     public float timeLimit = 60f;
     public int scorePerTarget = 100;
     public int scorePerPickup = 10;
+    
+    [Header("Cursors")]
+    public Texture2D cursorWhiteArrow;
+    public Texture2D cursorRedArrow;
+    public Texture2D cursorGreenArrow;
 
     [Header("Start Menu")] 
     public GameObject startUI;
@@ -66,7 +71,7 @@ public class GameController : MonoBehaviour
 
         string savedName = PlayerPrefs.GetString("savedName");
         
-        Debug.Log("Saved name is " + savedName);
+        Cursor.SetCursor(cursorWhiteArrow, Vector2.zero, CursorMode.Auto);
         
         if (savedName != "")
         {
@@ -103,6 +108,8 @@ public class GameController : MonoBehaviour
         
         startUI.SetActive(false);
         gameUI.SetActive(true);
+        
+        Cursor.SetCursor(cursorGreenArrow, Vector2.zero, CursorMode.Auto);
     }
 
     public void FirstLaunch()
