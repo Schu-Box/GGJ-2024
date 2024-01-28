@@ -10,11 +10,15 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance;
     
+    [Header("Values)")]
     public float timeLimit = 60f;
+    public int scorePerTarget = 100;
+    public int scorePerPickup = 10;
 
-    public TextMeshProUGUI speedText;
-    public TextMeshProUGUI scoreText;
-    // public Text scoreText;
+    [Header("UI")]
+    // public TextMeshProUGUI scoreText;
+    public Text scoreText;
+    public MMF_Player feedback_addScore;
     
     public Slider timeSlider;
     // public TextMeshProUGUI timerText;
@@ -59,8 +63,6 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-
-        speedText.text = Player.Instance.GetCurrentSpeed().ToString("F1");
 
         if (!gameOver)
         {
@@ -142,6 +144,8 @@ public class GameController : MonoBehaviour
             score += scoreEarned;
         
             scoreText.text = score.ToString();  
+            
+            feedback_addScore.PlayFeedbacks();
         }
     }
 }
