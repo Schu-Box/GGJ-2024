@@ -20,7 +20,6 @@ public class GameController : MonoBehaviour
     // public Text scoreText;
     public MMF_Player feedback_addScore;
     
-    public Slider timeSlider;
     public TextMeshProUGUI timerText;
     // public Text timerText;
     public MMF_Player feedback_lowTime;
@@ -73,7 +72,6 @@ public class GameController : MonoBehaviour
         if (!gameOver)
         {
             timeRemaining -= Time.deltaTime;
-            timeSlider.value = timeRemaining / timeLimit;
             timerText.text = (timeRemaining / timeLimit * timeLimit).ToString("F1");
             
             if (timeRemaining <= 0f)
