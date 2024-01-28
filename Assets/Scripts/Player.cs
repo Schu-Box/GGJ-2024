@@ -231,6 +231,10 @@ public class Player : MonoBehaviour
             {
                 fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Egg");  
             }
+            else if (bumper.bumperType == BumperType.Guitar)
+            {
+                fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Guitar");
+            }
             else
             {
                 fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Bounce");

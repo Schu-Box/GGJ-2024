@@ -103,6 +103,10 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Click");
+        fmodStudioEvent.start();
+        fmodStudioEvent.release();
+        
         // musicEmitter.SetParameter("Parameter 1", musicDuringGameplay);
         musicEmitter.EventInstance.setVolume(musicDuringGameplay);
         
@@ -179,7 +183,6 @@ public class GameController : MonoBehaviour
     {
         gameOver = true;
         
-        // musicEmitter.SetParameter("Parameter 1", musicDuringMenus);
         musicEmitter.EventInstance.setVolume(musicDuringMenus);
         
         //TODO: Delay on gameOverUI?

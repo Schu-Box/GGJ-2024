@@ -10,7 +10,7 @@ public enum BumperType
     None,
     Egg,
     Drum,
-    
+    Guitar
 }
 
 public class Bumper : MonoBehaviour
