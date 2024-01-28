@@ -38,11 +38,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -12.42
       objectReference: {fileID: 0}
     - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 13.51
       objectReference: {fileID: 0}
     - target: {fileID: 1969754574220530622, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
       propertyPath: m_LocalPosition.z
@@ -96,13 +96,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bumper_PickupBlob Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6121645376125147018, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8765621548798857082, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 785928491039405901, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
-    m_RemovedGameObjects: []
+    - {fileID: 8966479447347522509, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 4172366828865560783, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4547588658825777040, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}

@@ -41,6 +41,9 @@ TagManager:
   - name: Background
     uniqueID: 1126042369
     locked: 0
+  - name: Blobs
+    uniqueID: 4093690849
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

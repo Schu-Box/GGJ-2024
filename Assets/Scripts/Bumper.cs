@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MoreMountains.Feedbacks;
 using UnityEngine;
+using Random = System.Random;
 
 public class Bumper : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class Bumper : MonoBehaviour
     public MMF_Player feedback_breakable;
     public MMF_Player feedback_unbreakable;
     public MMF_Player feedback_pickup;
+
+    public Transform blobParent;
+    private List<Blob> blobList = new List<Blob>();
 
     private Collider2D collie;
     
@@ -42,6 +46,11 @@ public class Bumper : MonoBehaviour
         {
             collie.isTrigger = true;
         }
+        
+        foreach (Transform child in blobParent)
+        {
+            blobList.Add(child.GetComponent<Blob>());
+        }
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -61,6 +70,19 @@ public class Bumper : MonoBehaviour
             bumpDirection = -bumpDirection.normalized;
         
             Player.Instance.Bumped(this, bumpDirection * bumpForce);
+            
+            //TODO: Chance of displaying blob
+
+            float chanceOfBlob = 0.3f;
+            
+            if(UnityEngine.Random.value < chanceOfBlob)
+            {
+                Blob randomBlob = blobList[UnityEngine.Random.Range(0, blobList.Count)];
+                if (!randomBlob.displayed)
+                {
+                    randomBlob.Display();
+                }
+            }
         }
     }
 

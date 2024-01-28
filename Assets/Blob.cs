@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class Blob : MonoBehaviour
 {
     public List<GameObject> blobShapes;
     public List<GameObject> blobTextures;
+
+    public MMF_Player feedback_displayed;
+
+    public bool displayed = false;
 
     private void Awake()
     {
@@ -35,5 +40,12 @@ public class Blob : MonoBehaviour
                 blobTextures[i].SetActive(false);
             }
         }
+    }
+
+    public void Display()
+    {
+        displayed = true;
+        
+        feedback_displayed?.PlayFeedbacks();
     }
 }
