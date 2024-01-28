@@ -5,8 +5,18 @@ using MoreMountains.Feedbacks;
 using UnityEngine;
 using Random = System.Random;
 
+public enum BumperType
+{
+    None,
+    Egg,
+    Drum,
+    
+}
+
 public class Bumper : MonoBehaviour
 {
+    public BumperType bumperType;
+    
     public float bumpForce = 10f;
     
     public float massRequiredToBreak = 1f;
@@ -30,7 +40,7 @@ public class Bumper : MonoBehaviour
     private Collider2D collie;
     
     private bool breakable = false;
-    private bool isTarget = false;
+    public bool isTarget = false;
 
     private void Start()
     {
@@ -60,13 +70,6 @@ public class Bumper : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Debug.Log("Hit with speed: " + Player.Instance.GetLastVelocity());
-
-            if (isTarget)
-            {
-                HitTarget();
-            }
-            
             feedback_bump?.PlayFeedbacks();
         
             Vector2 bumpDirection = collision.GetContact(0).point - (Vector2)collision.transform.position;
@@ -74,7 +77,10 @@ public class Bumper : MonoBehaviour
         
             Player.Instance.Bumped(this, bumpDirection * bumpForce);
             
-            //TODO: Chance of displaying blob
+            if (isTarget)
+            {
+                HitTarget();
+            }
 
             float chanceOfBlob = 0.3f;
             
@@ -155,5 +161,7 @@ public class Bumper : MonoBehaviour
         GameController.Instance.SetRandomTarget();
         
         GameController.Instance.AddScore(GameController.Instance.scorePerTarget);
+        
+        isTarget = false;
     }
 }

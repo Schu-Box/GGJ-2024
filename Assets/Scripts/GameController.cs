@@ -63,7 +63,10 @@ public class GameController : MonoBehaviour
         
         timeRemaining = timeLimit;
 
-        string savedName = PlayerPrefs.GetString("savedName", "");
+        string savedName = PlayerPrefs.GetString("savedName");
+        
+        Debug.Log("Saved name is " + savedName);
+        
         if (savedName != "")
         {
             currentName = savedName;
@@ -88,6 +91,7 @@ public class GameController : MonoBehaviour
     {
         feedback_start.PlayFeedbacks();
         crumbleAnimator.Play("Shrink");
+        PlaySound("event:/Paper");
 
         gameStarted = true;
 
@@ -109,7 +113,7 @@ public class GameController : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             SceneManager.LoadScene(0);
         }
@@ -129,6 +133,8 @@ public class GameController : MonoBehaviour
                 
                 if (lowTimeTimer <= 0)
                 {
+                    PlaySound("event:/Warning");
+                    
                     feedback_lowTime.PlayFeedbacks();
                     
                     lowTimeTimer = lowTimeDurationBetweenFeedback;
@@ -155,9 +161,9 @@ public class GameController : MonoBehaviour
         
         gameOverUI.SetActive(true);
         
-        // crumbleAnimator.gameObject.SetActive(true);
-        crumbleAnimator.Play("Grow");
         feedback_end.PlayFeedbacks();
+        crumbleAnimator.Play("Grow");
+        PlaySound("event:/Paper");
 
         Player.Instance.StopMovement();
 
@@ -205,9 +211,18 @@ public class GameController : MonoBehaviour
             feedback_addScore.PlayFeedbacks();
         }
     }
-    
-    //TODO: FIX THIS RIGHT HERE!
 
+    private FMOD.Studio.EventInstance fmodStudioEvent;
+
+    public void PlaySound(string sound)
+    {
+        fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance(sound);
+        fmodStudioEvent.start();
+        fmodStudioEvent.release();
+    }
+
+    //TODO: RETRY IS NOT WORKING!
+    
     public void Retry()
     {
         PlayerPrefs.SetString("savedName", currentName);

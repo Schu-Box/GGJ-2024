@@ -139,6 +139,10 @@ public class Player : MonoBehaviour
     {
         feedback_launch?.PlayFeedbacks();
         
+        fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Speed");
+        fmodStudioEvent.start();
+        fmodStudioEvent.release();
+        
         //get the mousePosition on the screen
         Vector3 test = Input.mousePosition;
         test.z = 10f;
@@ -210,21 +214,28 @@ public class Player : MonoBehaviour
 
         rb.AddForce(force);
 
-        fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Bounce");
+        //TODO: Send these to an AudioManager/GameController script
+        if (bumper.isTarget)
+        {
+            fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Big Point");
+        }
+        else
+        {
+            if (bumper.bumperType == BumperType.Drum)
+            {
+                fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Drum");
+            } else if (bumper.bumperType == BumperType.Egg)
+            {
+                fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Egg");  
+            }
+            else
+            {
+                fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Bounce");
+            }
+        }
         fmodStudioEvent.start();
         fmodStudioEvent.release();
-
-        // activated = true;
-        //
-        // sr.color = Color.yellow;
     }
-
-    // public void Deactivate()
-    // {
-    //     activated = false;
-    //
-    //     sr.color = Color.white;
-    // }
 
     public void Pickup(Bumper pickup)
     {
@@ -234,6 +245,10 @@ public class Player : MonoBehaviour
         // Debug.Log("Added mass: " + massIncrease);
         
         transform.localScale = Vector3.one + (Vector3.one * (scaleIncreasePerMass * currentMass));
+        
+        fmodStudioEvent = FMODUnity.RuntimeManager.CreateInstance("event:/Point");
+        fmodStudioEvent.start();
+        fmodStudioEvent.release();
     }
 
     public void StopMovement()

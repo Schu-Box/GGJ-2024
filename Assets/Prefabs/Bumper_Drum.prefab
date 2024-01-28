@@ -13,6 +13,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 460120330565220627, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
+      propertyPath: bumperType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 460120330565220627, guid: 2e8df2ee3184d2249bc7d604705a2b34, type: 3}
       propertyPath: canBeTarget
       value: 1
       objectReference: {fileID: 0}
