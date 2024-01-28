@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
     private Bumper lastTarget = null;
 
     private float timeRemaining = 0f;
-    private int score = 0;
+    public int score = 0;
 
     private bool gameOver = false;
 
@@ -117,6 +117,8 @@ public class GameController : MonoBehaviour
         feedback_crumble.PlayFeedbacks();
 
         Player.Instance.StopMovement();
+
+        Leaderboard.Instance.FinalizeScore("TEST NAME");
     }
 
     public void AddBumper(Bumper bumper)
