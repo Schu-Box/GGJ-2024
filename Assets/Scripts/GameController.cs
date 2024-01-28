@@ -19,7 +19,8 @@ public class GameController : MonoBehaviour
     public GameObject startUI;
     public TMP_InputField nameInputField;
 
-    [Header("UI")]
+    [Header("UI")] 
+    public GameObject gameUI;
     public TextMeshProUGUI scoreText;
     // public Text scoreText;
     public MMF_Player feedback_addScore;
@@ -101,6 +102,7 @@ public class GameController : MonoBehaviour
         }
         
         startUI.SetActive(false);
+        gameUI.SetActive(true);
     }
 
     public void FirstLaunch()
@@ -159,7 +161,10 @@ public class GameController : MonoBehaviour
     {
         gameOver = true;
         
+        //TODO: Delay on gameOverUI?
+        
         gameOverUI.SetActive(true);
+        gameUI.SetActive(false);
         
         feedback_end.PlayFeedbacks();
         crumbleAnimator.Play("Grow");
