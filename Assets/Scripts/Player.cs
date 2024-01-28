@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
                 // Camera.main.backgroundColor = Color.gray;
             }
             
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && GameController.Instance.gameStarted)
             {
                 Launch();
             }
@@ -151,6 +151,8 @@ public class Player : MonoBehaviour
         onCooldown = true;
         cooldownTimer = cooldownDuration;
         // Camera.main.backgroundColor = Color.black;
+
+        GameController.Instance.FirstLaunch();
     }
 
     private void LateUpdate()

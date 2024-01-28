@@ -15,6 +15,10 @@ public class GameController : MonoBehaviour
     public int scorePerTarget = 100;
     public int scorePerPickup = 10;
 
+    [Header("Start Menu")] 
+    public GameObject startUI;
+    public TMP_InputField nameInputField;
+
     [Header("UI")]
     public TextMeshProUGUI scoreText;
     // public Text scoreText;
@@ -27,7 +31,8 @@ public class GameController : MonoBehaviour
 
     [Header("Start/End Animation")]
     public Animator crumbleAnimator;
-    public MMF_Player feedback_crumble;
+    public MMF_Player feedback_start;
+    public MMF_Player feedback_end;
 
     private List<Bumper> bumperList = new List<Bumper>();
     
@@ -37,11 +42,15 @@ public class GameController : MonoBehaviour
     private float timeRemaining = 0f;
     public int score = 0;
 
+    public bool gameStarted = false;
+    private bool firstLaunch = false;
     private bool gameOver = false;
 
     private float lowTimeThreshold = 10f;
     private float lowTimeDurationBetweenFeedback = 1f;
     private float lowTimeTimer = 0f;
+
+    private string currentName = "";
 
     private void Awake()
     {
@@ -61,6 +70,26 @@ public class GameController : MonoBehaviour
         
         SetRandomTarget();
     }
+
+    public void StartGame()
+    {
+        feedback_start.PlayFeedbacks();
+        crumbleAnimator.Play("Shrink");
+
+        gameStarted = true;
+
+        currentName = nameInputField.text;
+        
+        startUI.SetActive(false);
+    }
+
+    public void FirstLaunch()
+    {
+        if (!firstLaunch)
+        {
+            firstLaunch = true;
+        }
+    }
     
     private void Update()
     {
@@ -69,7 +98,7 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
-        if (!gameOver)
+        if (!gameOver && firstLaunch)
         {
             timeRemaining -= Time.deltaTime;
             timerText.text = (timeRemaining / timeLimit * timeLimit).ToString("F1");
@@ -112,11 +141,11 @@ public class GameController : MonoBehaviour
         
         // crumbleAnimator.gameObject.SetActive(true);
         crumbleAnimator.Play("Grow");
-        feedback_crumble.PlayFeedbacks();
+        feedback_end.PlayFeedbacks();
 
         Player.Instance.StopMovement();
 
-        Leaderboard.Instance.FinalizeScore("TEST NAME");
+        Leaderboard.Instance.FinalizeScore(currentName);
     }
 
     public void AddBumper(Bumper bumper)
