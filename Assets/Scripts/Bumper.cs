@@ -18,9 +18,10 @@ public class Bumper : MonoBehaviour
     // [HideInInspector]public float massValue;
 
     public MMF_Player feedback_bump;
-    public MMF_Player feedback_target;
-    public MMF_Player feedback_breakable;
-    public MMF_Player feedback_unbreakable;
+    public MMF_Player feedback_targetSpawn;
+    public MMF_Player feedback_targetHit;
+    // public MMF_Player feedback_breakable;
+    // public MMF_Player feedback_unbreakable;
     public MMF_Player feedback_pickup;
 
     public Transform blobParent;
@@ -98,7 +99,7 @@ public class Bumper : MonoBehaviour
                 
             feedback_pickup?.PlayFeedbacks();
             
-            GameController.Instance.AddScore(1);
+            GameController.Instance.AddScore(GameController.Instance.scorePerPickup);
         }
     }
 
@@ -124,17 +125,17 @@ public class Bumper : MonoBehaviour
         GameController.Instance.RemoveBumper(this);
     }
     
-    public void SetBreakableVisuals()
-    {
-        if (breakable)
-        {
-            feedback_breakable?.PlayFeedbacks();
-        }
-        else 
-        {
-            feedback_unbreakable?.PlayFeedbacks();
-        }
-    }
+    // public void SetBreakableVisuals()
+    // {
+    //     if (breakable)
+    //     {
+    //         feedback_breakable?.PlayFeedbacks();
+    //     }
+    //     else 
+    //     {
+    //         feedback_unbreakable?.PlayFeedbacks();
+    //     }
+    // }
 
     public void SetAsTarget()
     {
@@ -142,18 +143,17 @@ public class Bumper : MonoBehaviour
         
         Debug.Log("Setting new target: " + gameObject.name);
         
-        feedback_target?.PlayFeedbacks();
+        feedback_targetSpawn?.PlayFeedbacks();
     }
 
     public void HitTarget()
     {
         isTarget = false;
         
-        //TODO: No longer target feedback
-        feedback_unbreakable?.PlayFeedbacks();
+        feedback_targetHit?.PlayFeedbacks();
         
         GameController.Instance.SetRandomTarget();
         
-        GameController.Instance.AddScore(10);
+        GameController.Instance.AddScore(GameController.Instance.scorePerTarget);
     }
 }

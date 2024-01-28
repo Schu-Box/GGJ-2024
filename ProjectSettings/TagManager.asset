@@ -50,3 +50,6 @@ TagManager:
   - name: Player
     uniqueID: 1237084631
     locked: 0
+  - name: World Space UI
+    uniqueID: 2987990651
+    locked: 0
