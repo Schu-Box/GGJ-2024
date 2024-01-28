@@ -58,12 +58,23 @@ public class GameController : MonoBehaviour
 
         StartCoroutine(LateStart());
         
+        crumbleAnimator.gameObject.SetActive(true);
         gameOverUI.SetActive(false);
-        startUI.SetActive(true);
         
         timeRemaining = timeLimit;
 
-        crumbleAnimator.gameObject.SetActive(true);
+        string savedName = PlayerPrefs.GetString("savedName", "");
+        if (savedName != "")
+        {
+            currentName = savedName;
+            StartGame();
+        }
+        else
+        {
+            startUI.SetActive(true);
+        }
+        
+        PlayerPrefs.SetString("savedName", "");
     }
 
     private IEnumerator LateStart()
@@ -80,7 +91,10 @@ public class GameController : MonoBehaviour
 
         gameStarted = true;
 
-        currentName = nameInputField.text;
+        if (currentName == "")
+        {
+            currentName = nameInputField.text;
+        }
         
         startUI.SetActive(false);
     }
@@ -191,20 +205,14 @@ public class GameController : MonoBehaviour
             feedback_addScore.PlayFeedbacks();
         }
     }
+    
+    //TODO: FIX THIS RIGHT HERE!
 
     public void Retry()
     {
-        string savedName = currentName;
+        PlayerPrefs.SetString("savedName", currentName);
         
         SceneManager.LoadScene(0);
-
-        Debug.Log("IS this called?");
-        
-        StartGame();
-
-        currentName = savedName;
-
-        //TODO: Save player name
     }
 
     public void NewPlayer()
