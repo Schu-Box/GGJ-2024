@@ -10,6 +10,11 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance;
     
+    [Header("Music")]
+    public FMODUnity.StudioEventEmitter musicEmitter;
+    public float musicDuringMenus = 1f;
+    public float musicDuringGameplay = 0.5f;
+    
     [Header("Values)")]
     public float timeLimit = 60f;
     public int scorePerTarget = 100;
@@ -64,6 +69,9 @@ public class GameController : MonoBehaviour
 
         StartCoroutine(LateStart());
         
+        // musicEmitter.SetParameter("Parameter 1", musicDuringMenus);
+        musicEmitter.EventInstance.setVolume(musicDuringMenus);
+        
         crumbleAnimator.gameObject.SetActive(true);
         gameOverUI.SetActive(false);
         
@@ -71,7 +79,7 @@ public class GameController : MonoBehaviour
 
         string savedName = PlayerPrefs.GetString("savedName");
         
-        Cursor.SetCursor(cursorWhiteArrow, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(cursorWhiteArrow, Vector2.zero, CursorMode.ForceSoftware);
         
         if (savedName != "")
         {
@@ -95,6 +103,9 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        // musicEmitter.SetParameter("Parameter 1", musicDuringGameplay);
+        musicEmitter.EventInstance.setVolume(musicDuringGameplay);
+        
         feedback_start.PlayFeedbacks();
         crumbleAnimator.Play("Shrink");
         PlaySound("event:/Paper");
@@ -109,7 +120,7 @@ public class GameController : MonoBehaviour
         startUI.SetActive(false);
         gameUI.SetActive(true);
         
-        Cursor.SetCursor(cursorGreenArrow, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(cursorGreenArrow, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     public void FirstLaunch()
@@ -168,10 +179,10 @@ public class GameController : MonoBehaviour
     {
         gameOver = true;
         
-        //TODO: Delay on gameOverUI?
+        // musicEmitter.SetParameter("Parameter 1", musicDuringMenus);
+        musicEmitter.EventInstance.setVolume(musicDuringMenus);
         
-        gameOverUI.SetActive(true);
-        gameUI.SetActive(false);
+        //TODO: Delay on gameOverUI?
         
         feedback_end.PlayFeedbacks();
         crumbleAnimator.Play("Grow");
@@ -179,6 +190,16 @@ public class GameController : MonoBehaviour
 
         Player.Instance.StopMovement();
 
+        StartCoroutine(DelayThenDisplayGameOverUI());
+    }
+
+    private IEnumerator DelayThenDisplayGameOverUI()
+    {
+        yield return new WaitForSeconds(0.5f);
+        
+        gameOverUI.SetActive(true);
+        gameUI.SetActive(false);
+        
         Leaderboard.Instance.FinalizeScore(currentName);
     }
 
