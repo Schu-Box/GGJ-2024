@@ -59,6 +59,8 @@ public class GameController : MonoBehaviour
         StartCoroutine(LateStart());
         
         gameOverUI.SetActive(false);
+        startUI.SetActive(true);
+        
         timeRemaining = timeLimit;
 
         crumbleAnimator.gameObject.SetActive(true);
@@ -188,5 +190,25 @@ public class GameController : MonoBehaviour
             
             feedback_addScore.PlayFeedbacks();
         }
+    }
+
+    public void Retry()
+    {
+        string savedName = currentName;
+        
+        SceneManager.LoadScene(0);
+
+        Debug.Log("IS this called?");
+        
+        StartGame();
+
+        currentName = savedName;
+
+        //TODO: Save player name
+    }
+
+    public void NewPlayer()
+    {
+        SceneManager.LoadScene(0);
     }
 }
