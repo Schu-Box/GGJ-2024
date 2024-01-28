@@ -73,6 +73,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4574679867210724555, guid: 66d1be63c310bcf4e8c93542ac1bfba5, type: 3}
+      propertyPath: bumperType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574679867210724555, guid: 66d1be63c310bcf4e8c93542ac1bfba5, type: 3}
       propertyPath: massRequiredToBreak
       value: 3
       objectReference: {fileID: 0}
