@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI speedText;
     public TextMeshProUGUI scoreText;
     public Slider timeSlider;
+    public TextMeshProUGUI timerText;
     public GameObject gameOverUI;
 
     private List<Bumper> bumperList = new List<Bumper>();
@@ -56,6 +57,7 @@ public class GameController : MonoBehaviour
         {
             timeRemaining -= Time.deltaTime;
             timeSlider.value = timeRemaining / timeLimit;
+            timerText.text = (timeRemaining / timeLimit * timeLimit).ToString("F1");
             
             if (timeRemaining <= 0f)
             {
