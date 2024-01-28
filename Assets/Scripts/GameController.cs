@@ -16,13 +16,13 @@ public class GameController : MonoBehaviour
     public int scorePerPickup = 10;
 
     [Header("UI")]
-    // public TextMeshProUGUI scoreText;
-    public Text scoreText;
+    public TextMeshProUGUI scoreText;
+    // public Text scoreText;
     public MMF_Player feedback_addScore;
     
     public Slider timeSlider;
-    // public TextMeshProUGUI timerText;
-    public Text timerText;
+    public TextMeshProUGUI timerText;
+    // public Text timerText;
     public MMF_Player feedback_lowTime;
     public GameObject gameOverUI;
 
