@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
 
         string savedName = PlayerPrefs.GetString("savedName");
         
-        Cursor.SetCursor(cursorWhiteArrow, Vector2.zero, CursorMode.ForceSoftware);
+        Cursor.SetCursor(cursorWhiteArrow, Vector2.zero, CursorMode.Auto);
         
         if (savedName != "")
         {
@@ -120,7 +120,7 @@ public class GameController : MonoBehaviour
         startUI.SetActive(false);
         gameUI.SetActive(true);
         
-        Cursor.SetCursor(cursorGreenArrow, Vector2.zero, CursorMode.ForceSoftware);
+        Cursor.SetCursor(cursorGreenArrow, Vector2.zero, CursorMode.Auto);
     }
 
     public void FirstLaunch()
