@@ -1277,7 +1277,7 @@ MonoBehaviour:
         ModifyColor: 1
         ColorOverTime:
           serializedVersion: 2
-          key0: {r: 0.2392157, g: 1, b: 0.015686275, a: 1}
+          key0: {r: 0.63873965, g: 1, b: 0.390566, a: 1}
           key1: {r: 1, g: 1, b: 1, a: 1}
           key2: {r: 0, g: 0, b: 0, a: 0}
           key3: {r: 0, g: 0, b: 0, a: 0}
@@ -2849,7 +2849,7 @@ MonoBehaviour:
         ColorOverTime:
           serializedVersion: 2
           key0: {r: 1, g: 1, b: 1, a: 1}
-          key1: {r: 0.227451, g: 1, b: 0.003921569, a: 1}
+          key1: {r: 0.63873965, g: 1, b: 0.390566, a: 1}
           key2: {r: 0, g: 0, b: 0, a: 0}
           key3: {r: 0, g: 0, b: 0, a: 0}
           key4: {r: 0, g: 0, b: 0, a: 0}
