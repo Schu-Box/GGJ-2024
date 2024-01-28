@@ -892,6 +892,7 @@ GameObject:
   - component: {fileID: 460120330565220627}
   - component: {fileID: 785928491039405901}
   - component: {fileID: 3974145719874044750}
+  - component: {fileID: 2867690779653731417}
   m_Layer: 0
   m_Name: Bumper(Base)
   m_TagString: Untagged
@@ -1052,6 +1053,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &2867690779653731417
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4547588658825777040}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &4625211772637244144
 GameObject:
   m_ObjectHideFlags: 0
