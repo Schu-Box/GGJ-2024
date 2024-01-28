@@ -17,10 +17,12 @@ public class Player : MonoBehaviour
     public float maxSpeedFromMovement = 10f;
     public float requiredSpeedToBreakBumper = 15f;
 
+    public float fullSpeedAnimation = 10f;
+    
     [Header("Mass")]
     public float massAbsorbtionRate = 1f;
     public float scaleIncreasePerMass = 0.25f;
-
+    
     public float startingMass = 1;
     
     public float currentMass;
@@ -53,7 +55,7 @@ public class Player : MonoBehaviour
         sr = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
 
-        animator.Play("Idle");
+        // animator.Play("");
 
         currentMass = startingMass;
     }
@@ -119,16 +121,18 @@ public class Player : MonoBehaviour
             }
         }
         
-        if(!isRolling && GetCurrentSpeed() > 0)
-        {
-            animator.Play("Roll");
-            isRolling = true;
-        }
-        else if(isRolling && GetCurrentSpeed() <= 0)
-        {
-            animator.Play("Idle");
-            isRolling = false;
-        }
+        animator.SetFloat("Speed", GetCurrentSpeed() / fullSpeedAnimation);
+
+        // if(!isRolling && GetCurrentSpeed() > 0)
+        // {
+        //     animator.Play("Roll");
+        //     isRolling = true;
+        // }
+        // else if(isRolling && GetCurrentSpeed() <= 0)
+        // {
+        //     animator.Play("Idle");
+        //     isRolling = false;
+        // }
     }
 
     private void Launch()
