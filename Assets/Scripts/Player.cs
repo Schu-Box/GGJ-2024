@@ -222,7 +222,7 @@ public class Player : MonoBehaviour
         float massIncrease = massAbsorbtionRate * pickup.massGivenForBreaking;
         currentMass += massIncrease;
         
-        Debug.Log("Added mass: " + massIncrease);
+        // Debug.Log("Added mass: " + massIncrease);
         
         transform.localScale = Vector3.one + (Vector3.one * (scaleIncreasePerMass * currentMass));
     }
