@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
             {
                 onCooldown = false;
                 
-                Cursor.SetCursor(GameController.Instance.cursorGreenArrow, Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(GameController.Instance.cursorGreenArrow, Vector2.zero, CursorMode.ForceSoftware);
             }
             
             if (Input.GetMouseButtonDown(0) && GameController.Instance.gameStarted)
@@ -159,7 +159,7 @@ public class Player : MonoBehaviour
 
         GameController.Instance.FirstLaunch();
         
-        Cursor.SetCursor(GameController.Instance.cursorRedArrow, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(GameController.Instance.cursorRedArrow, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     private void LateUpdate()
