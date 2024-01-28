@@ -112,7 +112,8 @@ public class Player : MonoBehaviour
             if (onCooldown)
             {
                 onCooldown = false;
-                // Camera.main.backgroundColor = Color.gray;
+                
+                Cursor.SetCursor(GameController.Instance.cursorGreenArrow, Vector2.zero, CursorMode.Auto);
             }
             
             if (Input.GetMouseButtonDown(0) && GameController.Instance.gameStarted)
@@ -157,6 +158,8 @@ public class Player : MonoBehaviour
         // Camera.main.backgroundColor = Color.black;
 
         GameController.Instance.FirstLaunch();
+        
+        Cursor.SetCursor(GameController.Instance.cursorRedArrow, Vector2.zero, CursorMode.Auto);
     }
 
     private void LateUpdate()
