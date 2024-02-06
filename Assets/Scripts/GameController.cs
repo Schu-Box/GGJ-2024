@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
 
         string savedName = PlayerPrefs.GetString("savedName");
         
-        Cursor.SetCursor(cursorWhiteArrow, Vector2.zero, CursorMode.Auto);
+        SetCursor(cursorWhiteArrow);
         
         if (savedName != "")
         {
@@ -123,8 +123,8 @@ public class GameController : MonoBehaviour
         
         startUI.SetActive(false);
         gameUI.SetActive(true);
-        
-        Cursor.SetCursor(cursorGreenArrow, Vector2.zero, CursorMode.Auto);
+
+        SetCursor(cursorGreenArrow);
     }
 
     public void FirstLaunch()
@@ -269,5 +269,15 @@ public class GameController : MonoBehaviour
     public void NewPlayer()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void SetCursor(Texture2D cursorTexture)
+    {
+        Vector3 hotSpot = Vector3.zero;
+        #if UNITY_WEBGL  
+            Cursor.SetCursor(cursorTexture, hotSpot, CursorMode.ForceSoftware);
+        #else  
+            Cursor.SetCursor(cursorTexture, hotSpot, CursorMode.Auto);
+        #endif
     }
 }
